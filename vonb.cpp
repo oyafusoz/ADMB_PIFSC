@@ -1,10 +1,12 @@
+  #undef REPORT
+  #define REPORT(object) report << #object "\n" << object << endl;
 #include <admodel.h>
 #include <contrib.h>
 
   extern "C"  {
     void ad_boundf(int i);
   }
-#include <vonb.htp>
+#include <vonB.htp>
 
 model_data::model_data(int argc,char * argv[]) : ad_comm(argc,argv)
 {
@@ -58,6 +60,8 @@ void model_parameters::report(const dvector& gradients)
     cerr << "error trying to open report file"  << adprogram_name << ".rep";
     return;
   }
+  report << "linf\n" << Linf << endl;
+  REPORT(Linf);
 }
 
 void model_parameters::preliminary_calculations(void){

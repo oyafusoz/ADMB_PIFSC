@@ -36,4 +36,9 @@ PROCEDURE_SECTION
   f = norm2(epsilon);
   
 REPORT_SECTION
-
+  report << "linf\n" << Linf << endl;
+  REPORT(Linf);
+  
+GLOBALS_SECTION
+  #undef REPORT
+  #define REPORT(object) report << #object "\n" << object << endl;
